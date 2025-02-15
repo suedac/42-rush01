@@ -13,17 +13,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	main(int argc, char *argv[])
+
+
+/*int check_rules(int arr[])
+{
+	//lets check 4s first:
+
+	// return the array(not 'an' array:D)
+}*/
+
+int* put_nums(char *argv[])
 {
 	int arr[50];
 	char *input;
 	int i;
-	int current_num;
 
-	i = 0;
-	current_num = 0;
 	input = argv[1];
-
+	i = 0;
 	while (input[i] != '\0')
 	{
 		if (input[i] != ' ')
@@ -32,7 +38,24 @@ int	main(int argc, char *argv[])
 		}
 		i++;
 	}
-	return (0);
+	return *arr;
 }
 
+int main(int argc, char *argv[])
+{
+	int arr[50];
+	char *input;
+	int i;
 
+	i = 0;
+	
+	if (argc <= 1 || argc > 32)
+	{
+		return -1;
+	}
+	else
+	{
+		put_nums(*argv);
+		return 0;
+	}
+}
