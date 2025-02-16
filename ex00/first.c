@@ -6,7 +6,7 @@
 /*   By: zgahrama <zgahrama@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:18:45 by zgahrama          #+#    #+#             */
-/*   Updated: 2025/02/16 16:46:59 by zgahrama         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:52:30 by zgahrama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	*check_rules_four(int arr[], int output[])
 	return (output);
 }
 
-int	check_same_num(int num_row[], int num_arr[], int num)
-		// before putting the number inside the arrays, arrays created from output
+int	check_same_num(int num_arr[], int num)
+		// before putting the number inside the array, array created from output
 {
 	int i;
 
@@ -65,6 +65,7 @@ int	check_same_num(int num_row[], int num_arr[], int num)
 	}
 	return (1); // success
 }
+
 
 int	*put_nums(char *argv[])
 {
