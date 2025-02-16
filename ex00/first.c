@@ -6,7 +6,7 @@
 /*   By: zgahrama <zgahrama@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:18:45 by zgahrama          #+#    #+#             */
-/*   Updated: 2025/02/16 13:23:45 by zgahrama         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:33:14 by zgahrama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	*check_rules_four(int arr[], int output[])
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 8;
 	j = 0;
-	while (i < 4)
+	while (i < 15)
 	{
 		if (arr[i] == 4)
 		{
@@ -45,15 +45,31 @@ int	*check_rules_four(int arr[], int output[])
 	return (output);
 }
 
-int	check_rules_other(int arr[], int output[])
+int	check_same_num_left_to_right(int output[], int num)//before putting the number inside
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	
-
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (output[j] == num)
+			{
+				return (31); // for error
+			}
+			else
+			{
+				continue;
+			}
+			j++;
+		}
+		i++;
+	}
+	return 1;//success
 }
 
 int	*put_nums(char *argv[])
