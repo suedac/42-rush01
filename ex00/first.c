@@ -6,46 +6,64 @@
 /*   By: zgahrama <zgahrama@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:18:45 by zgahrama          #+#    #+#             */
-/*   Updated: 2025/02/15 17:23:54 by zgahrama         ###   ########.fr       */
+/*   Updated: 2025/02/16 13:23:45 by zgahrama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 
-int *check_rules(int arr[], int output[])
+int	*check_rules_four(int arr[], int output[])
 {
-	int i;
-	int j;
-	// lets check 4s first:
-	i = 0; // up to down(left side)
-	j = 0; // left to right(upper)
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 	while (i < 4)
 	{
 		if (arr[i] == 4)
+		{
 			output[(i - 8) * 4 + 3] = 4;
-		else if (arr[i] == 1)
-			output[(i - 8) * 4] = 4;
+			output[(i - 8) * 4 + 2] = 3;
+			output[(i - 8) * 4 + 1] = 2;
+			output[(i - 8) * 4] = 1;
+		}
 		i++;
 	}
 	while (j < 4)
 	{
 		if (arr[j] == 4)
+		{
 			output[j + 12] = 4;
-		else if (arr[j] == 1)
-			output[j] = 4;
+			output[j + 8] = 3;
+			output[j + 4] = 2;
+			output[j] = 1;
+		}
 		j++;
 	}
-	return output;
+	return (output);
 }
 
-int *put_nums(char *argv[])
+int	check_rules_other(int arr[], int output[])
 {
-	int *arr = malloc(16);
-	char *input;
 	int i;
-	int array_i;
+	int j;
 
+	i = 0;
+	j = 0;
+	
+
+}
+
+int	*put_nums(char *argv[])
+{
+	int		*arr;
+	char	*input;
+	int		i;
+	int		array_i;
+
+	arr = malloc(16);
 	input = argv[1];
 	i = 0;
 	array_i = 0;
@@ -58,19 +76,22 @@ int *put_nums(char *argv[])
 		}
 		i++;
 	}
-	return arr;
+	return (arr);
 }
 
-void print(int *output)
+void	print(int *output)
 {
-	int i = 0;
-	int j = 0;
+	int		i;
+	int		j;
+	char	digit;
+
+	i = 0;
+	j = 0;
 	while (i < 4)
 	{
 		j = 0;
 		while (j < 4)
 		{
-			char digit;
 			digit = output[j + i * 4] + '0';
 			write(1, &digit, 1);
 			write(1, " ", 1);
@@ -81,15 +102,17 @@ void print(int *output)
 	}
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	int *inputs;
-	int *output = malloc(64);
+	int	*inputs;
+	int	*output;
+
+	output = malloc(64);
 	if (argc <= 1 || argc > 32)
 	{
-		return -1;
+		return (-1);
 	}
 	inputs = put_nums(argv);
 	print(output);
-	return 0;
+	return (0);
 }
