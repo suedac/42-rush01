@@ -6,7 +6,7 @@
 /*   By: zgahrama <zgahrama@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:18:45 by zgahrama          #+#    #+#             */
-/*   Updated: 2025/02/16 21:04:24 by zgahrama         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:33:03 by zgahrama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	*num_input_one_left_right(int output[], int arr[])
 int	*check_two_two(int output[], int arr[])
 {
 	int	i;
-	int j;
+	int	j;
 
 	j = 0;
 	i = 0;
@@ -129,23 +129,122 @@ int	*check_two_two(int output[], int arr[])
 	{
 		if (arr[i] == 2 && arr[i + 4] == 2)
 		{
-			if(output[1] == 4)
+			if (output[1] == 4)
 			{
 				output[j] = 3;
-				output[j+2] = 1;
-				output[j+3] = 2;
+				output[j + 2] = 1;
+				output[j + 3] = 2;
 			}
-			else if(output[2] == 4)
+			else if (output[2] == 4)
 			{
 				output[j] = 2;
-				output[j+1] = 1;
-				output[j+3] = 3;
+				output[j + 1] = 1;
+				output[j + 3] = 3;
 			}
-			
 		}
-		j+=4;
+		j += 4;
 		i++;
 	}
+	i = 8;
+	j = 0;
+	while (i < 16)
+	{
+		if (arr[i] == 2 && arr[i + 4] == 2)
+		{
+			if (output[1] == 4)
+			{
+				output[j] = 3;
+				output[j + 2] = 1;
+				output[j + 3] = 2;
+			}
+			else if (output[2] == 4)
+			{
+				output[j] = 2;
+				output[j + 1] = 1;
+				output[j + 3] = 3;
+			}
+		}
+		j++;
+		i++;
+	}
+	return (output);
+}
+
+int	*check_two_three(int output[], int arr[])
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if ((arr[i] == 3 && arr[i + 4] == 2) || (arr[i] == 2 && arr[i
+				+ 4] == 3))
+		{
+			if (output[2] == 4)
+			{
+				if (output[3] == 1)
+				{
+					output[0] = 2;
+					output[1] = 3;
+				}
+				if (output[3] == 2)
+				{
+					output[0] = 1;
+					output[1] = 3;
+				}
+			}
+			if (output[1] == 4)
+			{
+				if (output[3] == 1)
+				{
+					output[0] = 2;
+					output[2] = 3;
+				}
+				if (output[3] == 2)
+				{
+					output[0] = 1;
+					output[2] = 3;
+				}
+			}
+		}
+		i++;
+	}
+	i = 8;
+	while (i < 12)
+	{
+		if ((arr[i] == 3 && arr[i + 4] == 2) || (arr[i] == 2 && arr[i
+				+ 4] == 3))
+		{
+			if (output[8] == 4)
+			{
+				if (output[12] == 1)
+				{
+					output[0] = 2;
+					output[4] = 3;
+				}
+				if (output[12] == 2)
+				{
+					output[0] = 1;
+					output[4] = 3;
+				}
+			}
+			if (output[4] == 4)
+			{
+				if (output[12] == 1)
+				{
+					output[0] = 2;
+					output[8] = 3;
+				}
+				if (output[12] == 2)
+				{
+					output[0] = 1;
+					output[8] = 3;
+				}
+			}
+		}
+		i++;
+	}
+	return output;
 }
 
 int	*put_nums(char *argv[])
