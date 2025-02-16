@@ -12,50 +12,64 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-
-
-/*int check_rules(int arr[])
+void check_rules(int arr[])
 {
-	//lets check 4s first:
+	// lets check 4s first:
+}
 
-	// return the array(not 'an' array:D)
-}*/
-
-int* put_nums(char *argv[])
+int *put_nums(char *argv[])
 {
-	int arr[50];
+	int *arr = malloc(16);
 	char *input;
 	int i;
+	int array_i;
 
 	input = argv[1];
 	i = 0;
+	array_i = 0;
 	while (input[i] != '\0')
 	{
 		if (input[i] != ' ')
 		{
-			arr[i] = input[i] - '0';
+			arr[array_i] = input[i] - '0';
+			array_i++;
 		}
 		i++;
 	}
-	return *arr;
+	return arr;
+}
+void print(int *output)
+{
+	int i = 0;
+	int j = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			char digit;
+			digit = output[j + i*4] + '0';
+			write(1, &digit, 1);
+			write(1, " ", 1);
+			j++;
+		}
+		write(1, "\n", 1);
+		i++;
+	}
 }
 
 int main(int argc, char *argv[])
 {
-	int arr[50];
-	char *input;
-	int i;
-
-	i = 0;
-	
+	int *inputs;
+	int *output = malloc(64);
 	if (argc <= 1 || argc > 32)
 	{
 		return -1;
 	}
-	else
-	{
-		put_nums(*argv);
-		return 0;
-	}
+
+	inputs = put_nums(argv);
+	print(output);
+	return 0;
 }
